@@ -1,25 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package managment.utils;
 
 import java.util.Scanner;
 import managment.services.ConnectionEstablishing;
 
-/**
- *
- * @author Lenovo
- */
-public class AddingStudentDetails {
+public class InsertingStudentData {
 
-    public static void addingStudent() {
+    public static void insertData() {
         Scanner inputReader = null;
         try {
             inputReader = new Scanner(System.in);
             System.out.print("Enter ROLL NUMBER of Student: ");
-            String rollno = inputReader.nextLine();
+            String rollNo = inputReader.nextLine();
 
             System.out.print("Enter Name of Student: ");
             String name = inputReader.nextLine();
@@ -28,14 +19,14 @@ public class AddingStudentDetails {
             String email = inputReader.nextLine();
 
             System.out.print("Enter class of Student: ");
-            String studentclass = inputReader.nextLine();
+            String studentClass = inputReader.nextLine();
 
             System.out.print("Enter Mobile Number of Student: ");
-            String mobilenumber = inputReader.nextLine();
+            String mobileNumber = inputReader.nextLine();
 
-            String sql = "INSERT INTO studentdetails(rollno, name, email, classname, mobileno) "
-                    + "VALUES ('" + rollno + "', '" + name + "', '" + email + "', '" + studentclass + "', '" + mobilenumber + "' );";
-            ConnectionEstablishing.connectDataBase(sql, null);
+            String sql = "insert into student_details(roll_num, name, email, class_name, mobile_num) "
+                    + "VALUES ('" + rollNo + "', '" + name + "', '" + email + "', '" + studentClass + "', '" + mobileNumber + "' );";
+            ConnectionEstablishing.querryUpdate(sql, null);
 
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());

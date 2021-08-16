@@ -14,16 +14,16 @@ import managment.services.ConnectionEstablishing;
  */
 public class DeletingBooks {
 
-    public static void deleteBookRecords() {
+    public static void vanishingBooks() {
         try {
             System.out.println("ENTER DETAILS OF BOOK FOR DELETING");
             Scanner consoleInput = new Scanner(System.in);
             System.out.println("ENTER BOOK NAME:");
-            String bookname = consoleInput.nextLine();
+            String bookName = consoleInput.nextLine();
             System.out.println("ENTER AUTHOR NAME:");
-            String authorname = consoleInput.nextLine();
-            String sql = "DELETE FROM BOOKDETAILS WHERE BOOKNAME = '" + bookname + "' AND AUTHOR = '" + authorname + "'";
-            ConnectionEstablishing.connectDataBase(sql, "DELETE");
+            String authorName = consoleInput.nextLine();
+            String sql = "delete from book_details where book_name = '" + bookName + "' and author = '" + authorName + "'";
+            ConnectionEstablishing.querryUpdate(sql, "DELETE");
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);

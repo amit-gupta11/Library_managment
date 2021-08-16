@@ -1,51 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package managment.common;
 
 import java.util.Scanner;
-import managment.utils.AddingBookDetails;
-import managment.utils.AddingStudentDetails;
-import managment.utils.IssuingBookLedger;
-import managment.utils.IssuingBooks;
-import managment.utils.SearchingOfStudent;
-import managment.utils.DeletingBooks;
-import managment.utils.UpdateBookDatabase;
-import managment.utils.BookReturn;
+import managment.utils.*;
 
-/**
- *
- * @author Lenovo
- */
 public class LibraryManagment {
 
     public static void main(String[] args) {
 
         OUTER:
         while (true) {
-            DisplayOptions.displayMenu();
+            MenuForDisplaying.menu();
             System.out.println("Please Enter Your Choice:");
             Scanner choiceInput = new Scanner(System.in);
             int choice = choiceInput.nextInt();
             switch (choice) {
                 case 1 ->
-                    AddingBookDetails.addingBook();
+                    InsertingBookData.insertData();
                 case 2 ->
-                    AddingStudentDetails.addingStudent();
+                    InsertingStudentData.insertData();
                 case 3 ->
-                    IssuingBookLedger.printLedger();
+                    IssuedBookLedger.fetchLedger();
                 case 4 ->
-                    IssuingBooks.bookIssue();
+                    BookIssuing.issuingBook();
                 case 5 ->
-                    SearchingOfStudent.SearchingStudent();
+                    FindStudentFromLedger.fetchData();
                 case 6 ->
-                    DeletingBooks.deleteBookRecords();
+                    DeletingBooks.vanishingBooks();
                 case 7 ->
-                    UpdateBookDatabase.deleteBookRecords();
+                    ModifyingBookDB.editingRecords();
                 case 8 ->
-                    BookReturn.returningBook();
+                    ReturningIssuedBooks.modifyingLedger();
                 case 9 -> {
                     System.out.println("Exiting BOOK MANAGMENT SYSTEM!");
                     break OUTER;

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package managment.services;
 
 import java.sql.Connection;
@@ -10,14 +6,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author Lenovo
- */
+
 public class ConnectionEstablishing {
 
-    public static void connectDataBase(String sql, String opertionType) {
-        String url = "jdbc:postgresql://localhost:5432/library_managment";
+    public static void querryUpdate(String sql, String opertionType) {
+        String url = "jdbc:postgresql://localhost:5432/library_system";
         String user = "postgres";
         String password = "admin";
         Connection connection = null;

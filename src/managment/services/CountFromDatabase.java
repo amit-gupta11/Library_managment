@@ -15,10 +15,10 @@ import java.sql.Statement;
  *
  * @author Lenovo
  */
-public class ConnectionEstablishingForCount {
+public class CountFromDatabase {
 
-    public static int countDataBaseRecord(String sql) {
-        String url = "jdbc:postgresql://localhost:5432/library_managment";
+    public static int countRecord(String sql) {
+        String url = "jdbc:postgresql://localhost:5432/library_system";
         String user = "postgres";
         String password = "admin";
         Connection connection = null;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package managment.services;
 
 import java.sql.Connection;
@@ -11,14 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author Lenovo
- */
-public class ConnectionEstablishingForGetStudentFullDetails {
+public class GetStudentRecord {
 
-    public static int getStudentDataBaseRecord(String sql) {
-        String url = "jdbc:postgresql://localhost:5432/library_managment";
+    public static int fetchRecord(String sql) {
+        String url = "jdbc:postgresql://localhost:5432/library_system";
         String user = "postgres";
         String password = "admin";
         Connection connection = null;
@@ -30,12 +21,12 @@ public class ConnectionEstablishingForGetStudentFullDetails {
             statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
-                System.out.print("ROLL NUMBER: " + rs.getInt("rollno"));
+                System.out.print("ROLL NUMBER: " + rs.getInt("roll_num"));
                 System.out.print(",STUDENT NAME: " + rs.getString("name"));
                 System.out.print(",EMAIL: " + rs.getString("email"));
-                System.out.println(",CLASS: " + rs.getString("classname"));
-                System.out.println(",MOBILE NUMBER: " + rs.getString("mobileno"));
-                System.out.println(",BOOK ID: " + rs.getInt("studentid"));
+                System.out.println(",CLASS: " + rs.getString("class_name"));
+                System.out.println(",MOBILE NUMBER: " + rs.getString("mobile_num"));
+                System.out.println(",BOOK ID: " + rs.getInt("student_roll_num"));
 
             }
             statement.close();

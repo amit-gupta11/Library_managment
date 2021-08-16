@@ -15,10 +15,10 @@ import java.sql.Statement;
  *
  * @author Lenovo
  */
-public class ConnectionEstablishingForGet {
+public class GetFromDatabase {
 
-    public static int getDataBaseRecord(String sql) {
-        String url = "jdbc:postgresql://localhost:5432/library_managment";
+    public static int getRecord(String sql) {
+        String url = "jdbc:postgresql://localhost:5432/library_system";
         String user = "postgres";
         String password = "admin";
         Connection connection = null;
@@ -30,10 +30,10 @@ public class ConnectionEstablishingForGet {
             statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
-                System.out.print("BOOK ID: " + rs.getInt("bookid"));
-                System.out.print(",ROLL NUMBER: " + rs.getInt("studentid"));
-                System.out.print(",ISSUED DATE: " + rs.getString("borrowdate"));
-                System.out.println(",RETURN DATE: " + rs.getString("returndate"));
+                System.out.print("BOOK ID: " + rs.getInt("book_id"));
+                System.out.print(",ROLL NUMBER: " + rs.getInt("student_roll_num"));
+                System.out.print(",ISSUED DATE: " + rs.getString("issued_date"));
+                System.out.println(",RETURN DATE: " + rs.getString("return_date"));
             }
 
             statement.close();

@@ -1,22 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package managment.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
-import managment.services.ConnectionEstablishingForCount;
-import managment.services.ConnectionEstablishing;
+import managment.services.*;
 
-/**
- *
- * @author Lenovo
- */
-public class IssuingBooks {
+public class BookIssuing {
 
-    public static void bookIssue() {
+    public static void issuingBook() {
         SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd");
 
         System.out.println("ENTER ID OF BOOK AND ROLL NUMBER OF STUDENT FOR ISSUING BOOK");
@@ -29,21 +19,21 @@ public class IssuingBooks {
             System.out.println("ENTER BOOK ISSUE DATE:");
             String issuedDate = consoleInput.nextLine();
             Date tempDate = formatter2.parse(issuedDate);
-            Calendar c = Calendar.getInstance();
-            c.setTime(tempDate);
-            c.add(Calendar.DATE, 15);
-            Date returnDate = c.getTime();
-            String verify = "SELECT COUNT (id) FROM BORROWBOOKS WHERE STUDENTID = '" + rollNumber + "' ";
-            int count = ConnectionEstablishingForCount.countDataBaseRecord(verify);
+            Calendar calender = Calendar.getInstance();
+            calender.setTime(tempDate);
+            calender.add(Calendar.DATE, 15);
+            Date returnDate = calender.getTime();
+            String verify = "select count (id) from borrowed_books where student_roll_num = '" + rollNumber + "' ";
+            int count = CountFromDatabase.countRecord(verify);
             System.out.println(verify);
             System.out.println(count);
             if (count < 5) {
-                String sql = "INSERT INTO BORROWBOOKS(bookid, studentid, borrowdate, returndate) "
+                String sql = "insert into borrowed_books(book_id, student_roll_num, issued_date, return_date) "
                         + "VALUES ('" + bookId + "', '" + rollNumber + "', '" + issuedDate + "', '" + returnDate + "' );";
 
-                ConnectionEstablishing.connectDataBase(sql, null);
+                ConnectionEstablishing.querryUpdate(sql, null);
             } else {
-                System.out.println("HI");
+                System.err.println("YOU ISSUE MAXIMUM NUMBER OF BOOKS");
             }
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
